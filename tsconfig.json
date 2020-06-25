@@ -14,7 +14,13 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "ng-simple-carousel": [
+        "dist/ng-simple-carousel/ng-simple-carousel",
+        "dist/ng-simple-carousel"
+      ]
+    }
   },
   "angularCompilerOptions": {
     "fullTemplateTypeCheck": true,
