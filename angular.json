@@ -168,7 +168,7 @@
   "defaultProject": "ng-simple-carousel-app",
   "schematics": {
     "@schematics/angular:component": {
-      "styleext": "scss"
+      "style": "scss"
     }
   }
 }
