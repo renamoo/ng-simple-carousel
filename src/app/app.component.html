@@ -20,7 +20,7 @@
   </div>
 
   <div class="carousel top">
-    <ng-simple-carousel-with-button [images]="images" [controller]="controller2">
+    <ng-simple-carousel-with-button [images]="images" [controller]="controller2" (imgChange)="onImgChange($event)">
     </ng-simple-carousel-with-button>
   </div>
 
@@ -33,6 +33,7 @@
     </ul>
   </div>
 
+  <button (click)="onJumpTo()">JUMP TO</button>
 
   <div class="wrap">
     <ng-simple-carousel [images]="images" [controller]="controller1"></ng-simple-carousel>

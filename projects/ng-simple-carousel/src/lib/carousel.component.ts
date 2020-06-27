@@ -14,7 +14,9 @@
  * limitations under the License.
  */
 
-import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, OnDestroy, OnInit, Output, ViewChild } from '@angular/core';
+import { BehaviorSubject, Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 import { CarouselController } from './carousel.controller';
 
 export interface CarouselImage {
@@ -27,7 +29,7 @@ export interface CarouselImage {
   templateUrl: './carousel.html',
   styleUrls: ['./carousel.scss']
 })
-export class NgSimpleCarouselComponent implements OnInit {
+export class NgSimpleCarouselComponent implements OnInit, OnDestroy {
   @ViewChild('container') containerEl: ElementRef;
   @Input() controller: CarouselController;
   @Input() images: CarouselImage[];
@@ -35,40 +37,60 @@ export class NgSimpleCarouselComponent implements OnInit {
   // @Input() infinite = false;
   @Output() imgChange: EventEmitter<string> = new EventEmitter();
   activeIndex = 0;
+  observer: IntersectionObserver;
+  scroll$ = new BehaviorSubject(false);
+  destroy$ = new Subject<void>();
+  test = 0;
+
   constructor() { }
 
   ngOnInit(): void {
-    this.controller.jump$.pipe().subscribe(id => this.jumpTo(id));
-    this.controller.action$.pipe().subscribe(action => action === 'prev' ? this.onPrev() : this.onNext());
+    this.controller.jump$.pipe(takeUntil(this.destroy$)).subscribe(id => this.jumpTo(id));
+    this.controller.action$.pipe(takeUntil(this.destroy$)).subscribe(action => action === 'prev' ? this.onPrev() : this.onNext());
   }
 
   ngAfterViewInit() {
+    this.initObserve();
+    this.startObserve();
+  }
+
+  initObserve() {
     const rootEl = this.containerEl.nativeElement as HTMLElement;
     const options = {
       root: rootEl,
       rootMargin: '0px -50%',
     };
-    const observer = new IntersectionObserver((entries, observer) => {
+    this.observer = new IntersectionObserver((entries, observer) => {
       entries.forEach(entry => {
-        if (entry.isIntersecting) {
+        if (entry.isIntersecting && this.test !== 1) {
           const activeId = entry.target.id;
           const newInd = this.images.findIndex(img => img.id === activeId)
           this.onImgChange(activeId, newInd);
         }
       });
     }, options);
-    Array.from(rootEl.children).forEach(img => observer.observe(img));
   }
 
+  startObserve() {
+    const rootEl = this.containerEl.nativeElement as HTMLElement;
+    Array.from(rootEl.children).forEach(img => this.observer.observe(img));
+  }
+
+  stopObserve() {
+    this.observer.disconnect();
+  }
+
+  // Observer will call onImgChange()
   jumpTo(id: string) {
     const newInd = this.images.findIndex(img => img.id === id);
+    if (this.activeIndex === newInd) { return; }
     const rootEl = this.containerEl.nativeElement as HTMLElement;
+    this.test = 1;
     rootEl.scrollTo({
       top: 0,
       left: rootEl.offsetWidth * newInd,
       behavior: 'smooth'
     });
-    this.onImgChange(id, newInd);
   }
 
   onPrev() {
@@ -86,8 +108,15 @@ export class NgSimpleCarouselComponent implements OnInit {
   }
 
   onImgChange(id: string, index: number) {
+    if (this.activeIndex === index) { return; }
     this.activeIndex = index;
-    this.imgChange.emit(id)
+    this.imgChange.emit(id);
+  }
+
+  ngOnDestroy() {
+    this.destroy$.next();
+    this.destroy$.complete();
+    this.stopObserve();
   }
 
 }

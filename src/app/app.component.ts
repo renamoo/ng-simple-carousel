@@ -27,10 +27,18 @@ import { CarouselController } from './../../projects/ng-simple-carousel/src/lib/
 export class AppComponent {
   title = 'ng-simple-carousel-app';
   images: CarouselImage[] = [
-    { id: 'two', src: 'https://storage.cloud.google.com/comeart-artists/ugetsu/black%20whirls.jpg' },
-    { id: 'one', src: 'https://storage.cloud.google.com/comeart-artists/ugetsu/black%20lion.jpg' },
+    { id: 'one', src: 'https://storage.cloud.google.com/comeart-artists/ugetsu/black%20whirls.jpg' },
+    { id: 'two', src: 'https://storage.cloud.google.com/comeart-artists/ugetsu/black%20lion.jpg' },
     { id: 'three', src: 'https://storage.cloud.google.com/comeart-artists/ugetsu/%E9%AC%BC%E7%81%AB.jpg' }
   ];
   controller1 = new CarouselController();
   controller2 = new CarouselController();
+
+  onImgChange(id: string) {
+    console.log(id);
+  }
+
+  onJumpTo() {
+    this.controller2.jumpTo('three');
+  }
 }
