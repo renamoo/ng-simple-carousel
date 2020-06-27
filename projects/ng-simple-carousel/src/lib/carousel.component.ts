@@ -40,7 +40,6 @@ export class NgSimpleCarouselComponent implements OnInit, OnDestroy {
   observer: IntersectionObserver;
   scroll$ = new BehaviorSubject(false);
   destroy$ = new Subject<void>();
-  test = 0;
 
   constructor() { }
 
@@ -62,7 +61,7 @@ export class NgSimpleCarouselComponent implements OnInit, OnDestroy {
     };
     this.observer = new IntersectionObserver((entries, observer) => {
       entries.forEach(entry => {
-        if (entry.isIntersecting && this.test !== 1) {
+        if (entry.isIntersecting) {
           const activeId = entry.target.id;
           const newInd = this.images.findIndex(img => img.id === activeId)
           this.onImgChange(activeId, newInd);
@@ -85,7 +84,6 @@ export class NgSimpleCarouselComponent implements OnInit, OnDestroy {
     const newInd = this.images.findIndex(img => img.id === id);
     if (this.activeIndex === newInd) { return; }
     const rootEl = this.containerEl.nativeElement as HTMLElement;
-    this.test = 1;
     rootEl.scrollTo({
       top: 0,
       left: rootEl.offsetWidth * newInd,
