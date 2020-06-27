@@ -1,4 +1,39 @@
+.page_wrap{
+  background: #98d6de;
+  color:white;
+}
+
+.title{
+  font-family: 'Comfortaa', cursive;
+  padding:20px 0;
+  font-size:2.5rem;
+}
+
+.features{
+  width:50vw;
+  margin:auto;
+}
+
+.subtitle{
+  font-family: 'Comfortaa', cursive;
+  font-size:2.0rem;
+}
+
+.center{
+  text-align:center;
+}
+
+.carousel{
+  margin:auto;
+  &.top{
+    width: 50vw;
+  }
+}
 
 .wrap {
   width:300px;
+}
+
+.mock{
+  height: 100vh;
 }

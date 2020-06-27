@@ -2,6 +2,7 @@
  * Public API Surface of ng-simple-carousel
  */
 
-export * from './lib/ng-simple-carousel.service';
-export * from './lib/ng-simple-carousel.component';
-export * from './lib/ng-simple-carousel.module';
+export * from './lib/carousel.component';
+export * from './lib/carousel.controller';
+export * from './lib/carousel.module';
+

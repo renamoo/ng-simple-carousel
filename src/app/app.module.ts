@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgSimpleCarouselModule } from './../../projects/ng-simple-carousel/src/lib/ng-simple-carousel.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgSimpleCarouselModule } from './../../projects/ng-simple-carousel/src/lib/carousel.module';
 import { AppComponent } from './app.component';
 
 
@@ -10,7 +11,8 @@ import { AppComponent } from './app.component';
   ],
   imports: [
     BrowserModule,
-    NgSimpleCarouselModule
+    NgSimpleCarouselModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

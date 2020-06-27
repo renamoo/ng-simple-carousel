@@ -1,3 +1,27 @@
-<div class="wrap">
-  <ng-simple-carousel></ng-simple-carousel>
+<div class="page_wrap">
+  <div>
+    <h1 class="center title">ng-simple-carousel</h1>
+  </div>
+
+  <div class="carousel top">
+    <ng-simple-carousel-with-button [images]="images" [controller]="controller2">
+    </ng-simple-carousel-with-button>
+  </div>
+
+  <div class="features">
+    <!-- <h2 class="subtitle">Features</h2> -->
+    <ul class="subtitle">
+      <li>Pure Angular Component</li>
+      <li>Easy customize</li>
+      <li>Responsive</li>
+    </ul>
+  </div>
+
+
+  <div class="wrap">
+    <ng-simple-carousel [images]="images" [controller]="controller1"></ng-simple-carousel>
+  </div>
+
+
+  <div class="mock"></div>
 </div>

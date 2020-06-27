@@ -1,6 +1,0 @@
-<div class="ng-simple-carousel">
-  <div class="img_wrap" *ngFor="let img of images; let i = index">
-    <img class="img" [class.prev]="i === activeIndex - 1" [class.next]="i === activeIndex + 1" [src]="img.src"
-      *ngIf="activeIndex - 1 <= i && i <= activeIndex + 1">
-  </div>
-</div>

@@ -1,0 +1,22 @@
+.wrap{
+  position:relative;
+}
+
+.button{
+  border: none;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  background: #ffffff69;
+  position: absolute;
+  top: calc(50% - 15px);
+  padding:0;
+  outline:none;
+  cursor:pointer;
+  &.left{
+    left: 5px;
+  }
+  &.right{
+    right:5px;
+  }
+}

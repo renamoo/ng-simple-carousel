@@ -1,0 +1,7 @@
+<div class="ng-simple-carousel" #container>
+  <div class="img_wrap" *ngFor="let img of images; let i = index" [id]="img.id">
+    <img class="img" [class.activeImg]="i === activeIndex" [class.prev]="i === activeIndex - 1"
+      [class.next]="i === activeIndex + 1" [src]="img.src" #image>
+  </div>
+</div>
+<ng-content></ng-content>
