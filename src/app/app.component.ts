@@ -53,8 +53,9 @@ const USAGES = [
 </div>`,
     css: `.wrap_carousel {
       margin:auto;
+      // image aspect ratio is 3 : 2
       width:80%;
-      height:350px;
+      height: calc((50vw - 40px) * 0.8 / 3 * 2);
     }`,
     ts: `export class SampleComponent {
     controllerButton = new CarouselController();
@@ -73,7 +74,31 @@ const USAGES = [
   },
   {
     id: 'dots',
-    title: 'Dots on top'
+    title: 'Dots on bottom',
+    html: `<div class="wrap_carousel">
+    <ng-simple-carousel-with-dots [images]="images" [controller]="controllerDots" (imgChange)="onImgChange($event)">
+    </ng-simple-carousel-with-dots>
+</div>`,
+    css: `.wrap_carousel {
+      margin:auto;
+      // image aspect ratio is 3 : 2
+      width:80%;
+      height: calc((50vw - 40px) * 0.8 / 3 * 2);
+    }`,
+    ts: `export class SampleComponent {
+    controllerDots = new CarouselController();
+
+    images: CarouselImage[] = [
+      { id: 'australian', src: 'assets/australian.jpg' },
+      { id: 'dachshund', src: 'assets/dachshund.jpg' },
+      { id: 'shiba', src: 'assets/shiba.jpg' }
+    ];
+
+    onImgChange(id: string) {
+      console.log(id);
+    }
+}
+    `
   },
   {
     id: 'auto',
