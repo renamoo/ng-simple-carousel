@@ -1,6 +1,6 @@
 {
   "name": "ng-simple-carousel",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "peerDependencies": {
     "@angular/common": "^9.0.7",
     "@angular/core": "^9.0.7"
@@ -14,5 +14,11 @@
     "slider",
     "slick",
     "slide"
-  ]
+  ],
+  "homepage": "https://ng-simple-carousel.netlify.app/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/renamoo/ng-simple-carousel.git"
+  },
+  "license": "Apache-2.0"
 }

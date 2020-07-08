@@ -25,6 +25,7 @@ import { CarouselController } from './../../projects/ng-simple-carousel/src/lib/
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+  isMobile = window.parent.screen.width < 896;
   images: CarouselImage[] = [
     { id: 'australian', src: 'assets/australian.jpg' },
     { id: 'dachshund', src: 'assets/dachshund.jpg' },

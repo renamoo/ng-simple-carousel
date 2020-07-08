@@ -1,5 +1,11 @@
+@import "./../styles.scss";
+
 .container{
   height:100vh;
+  @include mobile{
+    height:auto;
+    overflow-x: hidden;
+  }
 }
 
 .page_wrap{
@@ -15,6 +21,10 @@
 .section{
   width:50vw;
   margin:auto;
+  @include mobile{
+    width:100%;
+    margin:0
+  }
 }
 
 .subtitle{
@@ -35,12 +45,20 @@
     // image aspect ratio is 3 : 2
     width:80%;
     height: calc((50vw - 40px) * 0.8 / 3 * 2);
+    @include mobile{
+      width:90%;
+      height: calc((100vw - 40px) * 0.9 / 3 * 2);
+    }
   }
 }
 
 .wrap_carousel.top {
   width:50%;
   height: 350px;
+  @include mobile{
+    width:90%;
+    height: 250px;
+  }
 }
 
 .drawer{
@@ -77,6 +95,9 @@
 .apis_table{
   border-collapse: collapse;
   margin: 5px 0;
+  @include mobile{
+    margin: 5px 10px 0 -30px;
+  }
   caption{
     text-align:left;
   }
@@ -88,4 +109,10 @@
 
 .api_name{
   margin: 8px 0;
+}
+
+.usages_item{
+  @include mobile{
+    width: calc(100% - 40px);
+  }
 }

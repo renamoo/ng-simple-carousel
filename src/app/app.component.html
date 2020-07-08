@@ -15,7 +15,7 @@
 -->
 
 <mat-drawer-container class="container">
-  <mat-drawer mode="side" opened>
+  <mat-drawer mode="side" [opened]="!isMobile">
     <ul class="drawer">
       <li class="drawer_item"><a href="#features"># Features</a></li>
       <li class="drawer_item">
@@ -55,7 +55,7 @@
       <section class="section usages" id="usages">
         <h2 class="subtitle">Usages</h2>
         <ul>
-          <li *ngFor="let usage of usages" [id]="usage.id">
+          <li class="usages_item" *ngFor="let usage of usages" [id]="usage.id">
             <h3>{{usage.title}}</h3>
             <div class="wrap_carousel" [ngSwitch]="usage.id" *ngIf="!usage.isDev">
               <ng-simple-carousel-with-button *ngSwitchCase="'button'" [images]="images" [controller]="controllerButton"
@@ -78,7 +78,7 @@
       <section class="section apis" id="apis">
         <h2 class="subtitle">APIs</h2>
         <ul>
-          <li *ngFor="let api of apis" [id]="api.id">
+          <li class="apis_item" *ngFor="let api of apis" [id]="api.id">
             <h3 class="api_name">{{api.name}}</h3>
             Type: {{api.type}}
             <table class="apis_table" *ngIf="api.inputs">
