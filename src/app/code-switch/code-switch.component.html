@@ -1,0 +1,19 @@
+<div>
+  <div>
+    <mat-button-toggle-group class="mode_button_group" name="displayMode" aria-label="Display Mode">
+      <mat-button-toggle *ngFor="let mode of modes" class="mode_button" (click)="onClick(mode)" [value]="mode">
+        {{mode | uppercase}}</mat-button-toggle>
+    </mat-button-toggle-group>
+  </div>
+  <div class="code" [ngSwitch]="active">
+    <div *ngSwitchCase="'html'">
+      {{htmlStr}}
+    </div>
+    <div *ngSwitchCase="'css'">
+      {{cssStr}}
+    </div>
+    <div *ngSwitchCase="'ts'">
+      {{tsStr}}
+    </div>
+  </div>
+</div>

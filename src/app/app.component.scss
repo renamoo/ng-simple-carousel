@@ -1,5 +1,8 @@
+.container{
+  height:100vh;
+}
+
 .page_wrap{
-  background: #98d6de;
   color:white;
 }
 
@@ -9,7 +12,7 @@
   font-size:2.5rem;
 }
 
-.features{
+.section{
   width:50vw;
   margin:auto;
 }
@@ -23,17 +26,66 @@
   text-align:center;
 }
 
-.carousel{
+.wrap_carousel {
   margin:auto;
-  &.top{
-    width: 50vw;
+}
+
+.usages{
+  .wrap_carousel {
+    // image aspect ratio is 3 : 2
+    width:80%;
+    height: calc((50vw - 40px) * 0.8 / 3 * 2);
   }
 }
 
-.wrap {
-  width:300px;
+.wrap_carousel.top {
+  width:50%;
+  height: 350px;
 }
 
-.mock{
-  height: 100vh;
+.drawer{
+  list-style: none;
+  width:20vw;
+  height:100vhh;
+  overflow:hidden;
+  padding: 0 0 0 32px;
+}
+
+.drawer_item{
+  font-size: 1.3rem;
+  line-height: 2.0rem;
+  color:#005f6f;
+  a:visited, a:link{
+    color:currentColor;
+    text-decoration:none;
+  }
+  a:hover{
+    color:#3d94b7;
+  }
+}
+
+.child_drawer{
+  font-size: 1.1rem;
+}
+
+.drawer_footer{
+  padding: 0 16px;
+  position: absolute;
+  bottom: 16px;
+}
+
+.apis_table{
+  border-collapse: collapse;
+  margin: 5px 0;
+  caption{
+    text-align:left;
+  }
+  th, td{
+    border:white solid 1px;
+    padding:5px;
+  }
+}
+
+.api_name{
+  margin: 8px 0;
 }

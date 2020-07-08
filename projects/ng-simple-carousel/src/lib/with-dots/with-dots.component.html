@@ -18,14 +18,16 @@
   <ng-simple-carousel [images]="images" [controller]="controller" (imgChange)="onImgChange($event)"
     [objectFit]="objectFit">
   </ng-simple-carousel>
-  <button class="button left" (click)="onPrev()" *ngIf="!isFirstImg">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#3e3e3e" width="30px" height="30px">
-      <path d="M0 0h24v24H0z" fill="none" />
-      <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z" stroke="#616161" /></svg>
-  </button>
-  <button class="button right" (click)="onNext()" *ngIf="!isLastImg">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#3e3e3e" width="30px" height="30px">
-      <path d="M0 0h24v24H0z" fill="none" />
-      <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z" stroke="#616161" /></svg>
-  </button>
+  <div class="dots">
+    <ng-container *ngFor="let image of images">
+      <div class="dot" (click)="onDotsClick(image.id)">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" width="100%" height="100%">
+          <path d="M0 0h24v24H0z" fill="none" />
+          <path *ngIf="image.id === activeId" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z" />
+          <path *ngIf="image.id !== activeId"
+            d="M12 2C6.47 2 2 6.47 2 12s4.47 10 10 10 10-4.47 10-10S17.53 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z" />
+        </svg>
+      </div>
+    </ng-container>
+  </div>
 </div>

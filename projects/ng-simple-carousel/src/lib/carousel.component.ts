@@ -33,7 +33,7 @@ export class NgSimpleCarouselComponent implements OnInit, OnDestroy {
   @ViewChild('container') containerEl: ElementRef;
   @Input() controller: CarouselController;
   @Input() images: CarouselImage[];
-  // @Input() objectFit: 'contain' | 'cover' = 'cover';
+  @Input() objectFit: 'contain' | 'cover' = 'contain';
   // @Input() infinite = false;
   @Output() imgChange: EventEmitter<string> = new EventEmitter();
   activeIndex = 0;

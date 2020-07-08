@@ -2,8 +2,25 @@
 body{
   margin:0;
   padding:0;
+  background: #98d6de;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  overflow-y: hidden;
 }
 
 h1{
   margin:0;
+}
+
+.mat-button-toggle-appearance-standard .mat-button-toggle-label-content {
+  line-height: 36px;
+}
+
+.mat-drawer{
+  background: rgba(255, 255, 255, 0.23);
+  border:none;
+  font-family: sans-serif;
+}
+
+.mat-drawer-container {
+  background: transparent;
 }

@@ -15,20 +15,25 @@
  */
 
 import { NgModule } from '@angular/core';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { MatSidenavModule } from '@angular/material/sidenav';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgSimpleCarouselModule } from './../../projects/ng-simple-carousel/src/lib/carousel.module';
 import { AppComponent } from './app.component';
-
+import { CodeSwitchComponent } from './code-switch/code-switch.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    CodeSwitchComponent
   ],
   imports: [
     BrowserModule,
     NgSimpleCarouselModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatButtonToggleModule,
+    MatSidenavModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

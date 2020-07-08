@@ -1,0 +1,17 @@
+
+.code{
+  background:white;
+  color:#585858;
+  white-space: pre-wrap;
+  padding:5px;
+}
+
+.mode_button_group{
+  height:36px;
+  width:100%;
+  display:flex;
+}
+
+.mode_button{
+  flex-grow:1;
+}

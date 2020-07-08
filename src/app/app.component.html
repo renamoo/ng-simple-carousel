@@ -14,31 +14,126 @@
  limitations under the License.
 -->
 
-<div class="page_wrap">
-  <div>
-    <h1 class="center title">ng-simple-carousel</h1>
-  </div>
-
-  <div class="carousel top">
-    <ng-simple-carousel-with-button [images]="images" [controller]="controller2" (imgChange)="onImgChange($event)">
-    </ng-simple-carousel-with-button>
-  </div>
-
-  <div class="features">
-    <!-- <h2 class="subtitle">Features</h2> -->
-    <ul class="subtitle">
-      <li>Pure Angular Component</li>
-      <li>Easy customize</li>
-      <li>Responsive</li>
+<mat-drawer-container class="container">
+  <mat-drawer mode="side" opened>
+    <ul class="drawer">
+      <li class="drawer_item"><a href="#features"># Features</a></li>
+      <li class="drawer_item">
+        <a href="#usages"># Usages</a>
+        <ul class="child_drawer">
+          <li *ngFor="let usage of usages"><a [href]="'#' + usage.id">{{usage.title}}</a></li>
+        </ul>
+      </li>
+      <li class="drawer_item"><a href="#apis"># APIs</a></li>
     </ul>
-  </div>
+    <div class="drawer_footer">
+      <a href="https://github.com/renamoo/ng-simple-carousel"><img src="assets/github.png" width="32px"
+          height="32px"></a>
+    </div>
+  </mat-drawer>
+  <mat-drawer-content>
+    <div class="page_wrap">
+      <div>
+        <h1 class="center title">ng-simple-carousel</h1>
+      </div>
 
-  <button (click)="onJumpTo()">JUMP TO</button>
+      <div class="wrap_carousel top">
+        <ng-simple-carousel-with-button [images]="images" [controller]="controllerTop" objectFit="cover"
+          (imgChange)="onImgChange($event)">
+        </ng-simple-carousel-with-button>
+      </div>
 
-  <div class="wrap">
-    <ng-simple-carousel [images]="images" [controller]="controller1"></ng-simple-carousel>
-  </div>
+      <section class="section features" id="features">
+        <!-- <h2 class="subtitle">Features</h2> -->
+        <ul class="subtitle">
+          <li>Pure Angular Component</li>
+          <li>Easy customize</li>
+          <li>Responsive</li>
+        </ul>
+      </section>
 
+      <section class="section usages" id="usages">
+        <h2 class="subtitle">Usages</h2>
+        <ul>
+          <li *ngFor="let usage of usages" [id]="usage.id">
+            <h3>{{usage.title}}</h3>
+            <div class="wrap_carousel" [ngSwitch]="usage.id" *ngIf="!usage.isDev">
+              <ng-simple-carousel-with-button *ngSwitchCase="'button'" [images]="images" [controller]="controllerButton"
+                (imgChange)="onImgChange($event)">
+              </ng-simple-carousel-with-button>
+              <ng-simple-carousel-with-dots *ngSwitchCase="'dots'" [images]="images" [controller]="controllerDots"
+                (imgChange)="onImgChange($event)">
+              </ng-simple-carousel-with-dots>
+            </div>
+            <div *ngIf="!usage.isDev">
+              <app-code-switch [htmlStr]="usage.html" [cssStr]="usage.css" [tsStr]="usage.ts"></app-code-switch>
+            </div>
+            <div *ngIf="usage.isDev">
+              Still on developing. Coming Soon!
+            </div>
+          </li>
+        </ul>
+      </section>
 
-  <div class="mock"></div>
-</div>
+      <section class="section apis" id="apis">
+        <h2 class="subtitle">APIs</h2>
+        <ul>
+          <li *ngFor="let api of apis" [id]="api.id">
+            <h3 class="api_name">{{api.name}}</h3>
+            Type: {{api.type}}
+            <table class="apis_table" *ngIf="api.inputs">
+              <caption>@Inputs</caption>
+              <tr>
+                <th>Name</th>
+                <th>Type</th>
+                <th></th>
+              </tr>
+              <tr *ngFor="let input of api.inputs">
+                <td>{{input.name}}</td>
+                <td><a [href]="input.link">{{input.type}}</a></td>
+                <td>{{input.caption}}</td>
+              </tr>
+            </table>
+            <table class="apis_table" *ngIf="api.outputs">
+              <caption>@Outputs</caption>
+              <tr>
+                <th>Name</th>
+                <th>Type</th>
+                <th></th>
+              </tr>
+              <tr *ngFor="let output of api.outputs">
+                <td>{{output.name}}</td>
+                <td>{{output.type}}</td>
+                <td>{{output.caption}}</td>
+              </tr>
+            </table>
+            <table class="apis_table" *ngIf="api.methods">
+              <caption>Methods</caption>
+              <tr>
+                <th>Name</th>
+                <th>Arg</th>
+                <th></th>
+              </tr>
+              <tr *ngFor="let method of api.methods">
+                <td>{{method.name}}</td>
+                <td>{{method.arg}}</td>
+                <td>{{method.caption}}</td>
+              </tr>
+            </table>
+            <table class="apis_table" *ngIf="api.props">
+              <caption>Properties</caption>
+              <tr>
+                <th>Name</th>
+                <th>Type</th>
+              </tr>
+              <tr *ngFor="let prop of api.props">
+                <td>{{prop.name}}</td>
+                <td>{{prop.type}}</td>
+              </tr>
+            </table>
+          </li>
+        </ul>
+      </section>
+    </div>
+  </mat-drawer-content>
+</mat-drawer-container>

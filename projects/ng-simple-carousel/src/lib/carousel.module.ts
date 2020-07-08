@@ -18,12 +18,13 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { NgSimpleCarouselComponent } from './carousel.component';
 import { NgSimpleCarouselWithButtonComponent } from './with-button/with-button.component';
+import { NgSimpleCarouselWithDotsComponent } from './with-dots/with-dots.component';
 
 @NgModule({
-  declarations: [NgSimpleCarouselComponent, NgSimpleCarouselWithButtonComponent],
+  declarations: [NgSimpleCarouselComponent, NgSimpleCarouselWithButtonComponent, NgSimpleCarouselWithDotsComponent],
   imports: [
     CommonModule
   ],
-  exports: [NgSimpleCarouselComponent, NgSimpleCarouselWithButtonComponent]
+  exports: [NgSimpleCarouselComponent, NgSimpleCarouselWithButtonComponent, NgSimpleCarouselWithDotsComponent]
 })
 export class NgSimpleCarouselModule { }

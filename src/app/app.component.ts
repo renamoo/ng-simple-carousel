@@ -25,20 +25,191 @@ import { CarouselController } from './../../projects/ng-simple-carousel/src/lib/
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'ng-simple-carousel-app';
   images: CarouselImage[] = [
-    { id: 'one', src: 'https://storage.cloud.google.com/comeart-artists/ugetsu/black%20whirls.jpg' },
-    { id: 'two', src: 'https://storage.cloud.google.com/comeart-artists/ugetsu/black%20lion.jpg' },
-    { id: 'three', src: 'https://storage.cloud.google.com/comeart-artists/ugetsu/%E9%AC%BC%E7%81%AB.jpg' }
+    { id: 'australian', src: 'assets/australian.jpg' },
+    { id: 'dachshund', src: 'assets/dachshund.jpg' },
+    { id: 'shiba', src: 'assets/shiba.jpg' }
   ];
-  controller1 = new CarouselController();
-  controller2 = new CarouselController();
+  controllerTop = new CarouselController();
+  controllerButton = new CarouselController();
+  controllerDots = new CarouselController();
+  controllerAuto = new CarouselController();
+  usages = USAGES;
+  apis = APIS;
 
   onImgChange(id: string) {
     console.log(id);
   }
-
-  onJumpTo() {
-    this.controller2.jumpTo('three');
-  }
 }
+
+const USAGES = [
+  {
+    id: 'button',
+    title: 'Buttons on sides',
+    html: `<div class="wrap_carousel">
+    <ng-simple-carousel-with-button [images]="images" [controller]="controllerButton" (imgChange)="onImgChange($event)">
+    </ng-simple-carousel-with-button>
+</div>`,
+    css: `.wrap_carousel {
+      margin:auto;
+      width:80%;
+      height:350px;
+    }`,
+    ts: `export class SampleComponent {
+    controllerButton = new CarouselController();
+
+    images: CarouselImage[] = [
+      { id: 'australian', src: 'assets/australian.jpg' },
+      { id: 'dachshund', src: 'assets/dachshund.jpg' },
+      { id: 'shiba', src: 'assets/shiba.jpg' }
+    ];
+
+    onImgChange(id: string) {
+      console.log(id);
+    }
+}
+    `
+  },
+  {
+    id: 'dots',
+    title: 'Dots on top'
+  },
+  {
+    id: 'auto',
+    title: 'Auto slides',
+    isDev: true
+  }
+];
+
+const APIS = [
+  {
+    name: 'NgSimpleCarouselComponent',
+    type: 'component',
+    selector: 'ng-simple-carousel',
+    inputs: [
+      {
+        name: 'controller',
+        type: 'CarouselController',
+        link: '#carouselController',
+        caption: 'Class used to change component state programatically'
+      },
+      {
+        name: 'images',
+        type: 'CarouselImage[]',
+        link: '#carouselImage',
+        caption: 'Information of images on the slides'
+      },
+      {
+        name: 'objectFit',
+        type: '"contain" | "cover"',
+        caption: 'Set css object-fit property. Default is contain'
+      }
+    ],
+    outputs: [
+      {
+        name: 'imgChange',
+        type: 'EventEmitter<string>',
+        caption: 'Id of image emitted when active image is changed'
+      }
+    ]
+  },
+  {
+    name: 'NgSimpleCarouselWithButtonComponent',
+    type: 'component',
+    selector: 'ng-simple-carousel-with-button',
+    inputs: [
+      {
+        name: 'controller',
+        type: 'CarouselController',
+        link: '#carouselController',
+        caption: 'Class used to change component state programatically'
+      },
+      {
+        name: 'images',
+        type: 'CarouselImage[]',
+        link: '#carouselImage',
+        caption: 'Information of images on the slides'
+      },
+      {
+        name: 'objectFit',
+        type: '"contain" | "cover"',
+        caption: 'Set css object-fit property. Default is contain'
+      }
+    ],
+    outputs: [
+      {
+        name: 'imgChange',
+        type: 'EventEmitter<string>',
+        caption: 'Id of image emitted when active image is changed'
+      }
+    ]
+  },
+  {
+    name: 'NgSimpleCarouselComponentWithDots',
+    type: 'component',
+    selector: 'ng-simple-carousel-with-dots',
+    inputs: [
+      {
+        name: 'controller',
+        type: 'CarouselController',
+        link: '#carouselController',
+        caption: 'Class used to change component state programatically'
+      },
+      {
+        name: 'images',
+        type: 'CarouselImage[]',
+        link: '#carouselImage',
+        caption: 'Information of images on the slides'
+      },
+      {
+        name: 'objectFit',
+        type: '"contain" | "cover"',
+        caption: 'Set css object-fit property. Default is contain'
+      }
+    ],
+    outputs: [
+      {
+        name: 'imgChange',
+        type: 'EventEmitter<string>',
+        caption: 'Id of image emitted when active image is changed'
+      }
+    ]
+  },
+  {
+    name: 'CarouselController',
+    type: 'class',
+    id: 'carouselController',
+    methods: [
+      {
+        name: 'jumpTo',
+        arg: 'id<string>',
+        caption: 'jump to the image of specified id'
+      },
+      {
+        name: 'prev',
+        arg: '---',
+        caption: 'Go to previous image'
+      },
+      {
+        name: 'next',
+        arg: '---',
+        caption: 'Go to next image'
+      }
+    ]
+  },
+  {
+    name: 'CarouselImage',
+    type: 'interface',
+    id: 'carouselImage',
+    props: [
+      {
+        name: 'id',
+        type: 'string'
+      },
+      {
+        name: 'src',
+        type: 'string'
+      }
+    ]
+  }
+];
