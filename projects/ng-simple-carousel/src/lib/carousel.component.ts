@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import { Component, ElementRef, EventEmitter, Input, OnDestroy, OnInit, Output, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, EventEmitter, Input, OnDestroy, OnInit, Output, ViewChild } from '@angular/core';
 import { BehaviorSubject, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { CarouselController } from './carousel.controller';
@@ -22,6 +22,25 @@ import { CarouselController } from './carousel.controller';
 export interface CarouselImage {
   id: string;
   src: string;
+  alt?: string;
+  /**
+   * [For Responsive Image]{@link https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images}
+   */
+  srcset?: string;
+  /**
+   * [For Responsive Image]{@link https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images}
+   */
+  sizes?: string;
+  sources?: CarouselImageSource[];
+}
+
+/**
+ * [For source in picture element]{@link https://developer.mozilla.org/ja/docs/Web/HTML/Element/picture}
+ */
+export interface CarouselImageSource {
+  srcset: string;
+  type?: string;
+  sizes?: string;
 }
 
 @Component({
@@ -29,7 +48,7 @@ export interface CarouselImage {
   templateUrl: './carousel.html',
   styleUrls: ['./carousel.scss']
 })
-export class NgSimpleCarouselComponent implements OnInit, OnDestroy {
+export class NgSimpleCarouselComponent implements OnInit, OnDestroy, AfterViewInit {
   @ViewChild('container') containerEl: ElementRef;
   @Input() controller: CarouselController;
   @Input() images: CarouselImage[];

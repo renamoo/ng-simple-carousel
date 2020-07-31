@@ -64,6 +64,9 @@
               <ng-simple-carousel-with-dots *ngSwitchCase="'dots'" [images]="images" [controller]="controllerDots"
                 (imgChange)="onImgChange($event)">
               </ng-simple-carousel-with-dots>
+              <ng-simple-carousel-with-dots *ngSwitchCase="'artDirection'" [images]="imagesWithDirection"
+                [controller]="controllerDirection" (imgChange)="onImgChange($event)">
+              </ng-simple-carousel-with-dots>
             </div>
             <div *ngIf="!usage.isDev">
               <app-code-switch [htmlStr]="usage.html" [cssStr]="usage.css" [tsStr]="usage.ts"></app-code-switch>

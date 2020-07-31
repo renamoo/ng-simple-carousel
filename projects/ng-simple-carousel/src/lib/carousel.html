@@ -16,7 +16,11 @@
 
 <div class="ng-simple-carousel" #container>
   <div class="img_wrap" *ngFor="let img of images; let i = index" [id]="img.id">
-    <img class="img" [class.activeImg]="i === activeIndex" [class.prev]="i === activeIndex - 1"
-      [class.next]="i === activeIndex + 1" [src]="img.src" [style.object-fit]="objectFit" #image>
+    <picture>
+      <source *ngFor="let source of img?.sources" [srcset]="source.srcset" [type]="source.type" [sizes]="source.sizes">
+      <img class="img" [class.activeImg]="i === activeIndex" [class.prev]="i === activeIndex - 1"
+        [class.next]="i === activeIndex + 1" [src]="img.src" [style.object-fit]="objectFit" [srcset]="img.srcset"
+        [alt]="img.alt" [sizes]="img.sizes" #image>
+    </picture>
   </div>
 </div>
