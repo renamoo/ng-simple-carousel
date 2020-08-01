@@ -80,62 +80,7 @@
 
       <section class="section apis" id="apis">
         <h2 class="subtitle">APIs</h2>
-        <ul>
-          <li class="apis_item" *ngFor="let api of apis" [id]="api.id">
-            <h3 class="api_name">{{api.name}}</h3>
-            Type: {{api.type}}
-            <table class="apis_table" *ngIf="api.inputs">
-              <caption>@Inputs</caption>
-              <tr>
-                <th>Name</th>
-                <th>Type</th>
-                <th></th>
-              </tr>
-              <tr *ngFor="let input of api.inputs">
-                <td>{{input.name}}</td>
-                <td><a [href]="input.link">{{input.type}}</a></td>
-                <td>{{input.caption}}</td>
-              </tr>
-            </table>
-            <table class="apis_table" *ngIf="api.outputs">
-              <caption>@Outputs</caption>
-              <tr>
-                <th>Name</th>
-                <th>Type</th>
-                <th></th>
-              </tr>
-              <tr *ngFor="let output of api.outputs">
-                <td>{{output.name}}</td>
-                <td>{{output.type}}</td>
-                <td>{{output.caption}}</td>
-              </tr>
-            </table>
-            <table class="apis_table" *ngIf="api.methods">
-              <caption>Methods</caption>
-              <tr>
-                <th>Name</th>
-                <th>Arg</th>
-                <th></th>
-              </tr>
-              <tr *ngFor="let method of api.methods">
-                <td>{{method.name}}</td>
-                <td>{{method.arg}}</td>
-                <td>{{method.caption}}</td>
-              </tr>
-            </table>
-            <table class="apis_table" *ngIf="api.props">
-              <caption>Properties</caption>
-              <tr>
-                <th>Name</th>
-                <th>Type</th>
-              </tr>
-              <tr *ngFor="let prop of api.props">
-                <td>{{prop.name}}</td>
-                <td>{{prop.type}}</td>
-              </tr>
-            </table>
-          </li>
-        </ul>
+        <div class="markdown" [innerHTML]="md | md" *ngIf="md"></div>
       </section>
     </div>
   </mat-drawer-content>
