@@ -1,3 +1,4 @@
+import { HttpClientModule } from '@angular/common/http';
 /**
  * Copyright 2020 Google LLC
  *
@@ -13,7 +14,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 import { NgModule } from '@angular/core';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatSidenavModule } from '@angular/material/sidenav';
@@ -22,11 +22,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgSimpleCarouselModule } from './../../projects/ng-simple-carousel/src/lib/carousel.module';
 import { AppComponent } from './app.component';
 import { CodeSwitchComponent } from './code-switch/code-switch.component';
+import { MdPipe } from './md.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CodeSwitchComponent
+    CodeSwitchComponent,
+    MdPipe
   ],
   imports: [
     BrowserModule,
@@ -34,6 +36,7 @@ import { CodeSwitchComponent } from './code-switch/code-switch.component';
     BrowserAnimationsModule,
     MatButtonToggleModule,
     MatSidenavModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

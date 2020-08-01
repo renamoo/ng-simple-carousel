@@ -30,3 +30,18 @@ h1{
 .mat-drawer-container {
   background: transparent;
 }
+
+table{
+  border-collapse: collapse;
+  margin: 5px 0;
+  @include mobile{
+    margin: 5px 10px 0 -30px;
+  }
+  caption{
+    text-align:left;
+  }
+  th, td{
+    border:white solid 1px;
+    padding:5px;
+  }
+}

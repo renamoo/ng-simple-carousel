@@ -92,21 +92,6 @@
   bottom: 16px;
 }
 
-.apis_table{
-  border-collapse: collapse;
-  margin: 5px 0;
-  @include mobile{
-    margin: 5px 10px 0 -30px;
-  }
-  caption{
-    text-align:left;
-  }
-  th, td{
-    border:white solid 1px;
-    padding:5px;
-  }
-}
-
 .api_name{
   margin: 8px 0;
 }
