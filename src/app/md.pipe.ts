@@ -15,7 +15,7 @@ export class MdPipe implements PipeTransform {
   }
 
   parseMd(md: string) {
-    return marked(md, { headerIds: true, headerPrefix: 'api_' });
+    return marked(md, { headerIds: true });
   }
 
 }
