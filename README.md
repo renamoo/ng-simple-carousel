@@ -17,24 +17,24 @@ npm i ng-simple-carousel
 ### NgSimpleCarouselComponent
 |  | Name       | Type |       |                  
 |----|------------|----------------------|------------------------------------------------------|
-| @Input | controller | CarouselController   | Class used to change component state programatically |
-| @Input | images     | CarouselImage[]      | Information of images on the slides                  |
+| @Input | controller | [CarouselController](#carouselcontroller)   | Class used to change component state programatically |
+| @Input | images     | [CarouselImage[ ]](#carouselimage)      | Information of images on the slides                  |
 | @Input | objectFit  | "contain" \| "cover" | Set css object-fit property. Default is contain      |
 | @Output | imgChange | EventEmitter<string> | Id of image emitted when active image is changed
 
 ### NgSimpleCarouselWithButtonComponent
 |  | Name       | Type |       |                  
 |----|------------|----------------------|------------------------------------------------------|
-| @Input | controller | CarouselController   | Class used to change component state programatically |
-| @Input | images     | CarouselImage[]      | Information of images on the slides                  |
+| @Input | controller | [CarouselController](#carouselcontroller)   | Class used to change component state programatically |
+| @Input | images     | [CarouselImage[ ]](#carouselimage)      | Information of images on the slides                  |
 | @Input | objectFit  | "contain" \| "cover" | Set css object-fit property. Default is contain      |
 | @Output | imgChange | EventEmitter<string> | Id of image emitted when active image is changed
 
 ### NgSimpleCarouselComponentWithDots
 |  | Name       | Type |       |                  
 |----|------------|----------------------|------------------------------------------------------|
-| @Input | controller | CarouselController   | Class used to change component state programatically |
-| @Input | images     | CarouselImage[]      | Information of images on the slides                  |
+| @Input | controller | [CarouselController](#carouselcontroller)   | Class used to change component state programatically |
+| @Input | images     | [CarouselImage[ ]](#carouselimage)      | Information of images on the slides                  |
 | @Input | objectFit  | "contain" \| "cover" | Set css object-fit property. Default is contain      |
 | @Output | imgChange | EventEmitter<string> | Id of image emitted when active image is changed
 
@@ -53,7 +53,7 @@ npm i ng-simple-carousel
 | srcset | string |  | |
 | sizes | string |  | |
 | alt | string |  | |
-| sources | CarouselImageSource [ ] |  | |
+| sources | [CarouselImageSource [ ]](#carouselimagesource) |  | |
 
 ### CarouselImageSource
 | Name       | Type |       |  |                
