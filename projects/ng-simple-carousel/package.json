@@ -1,9 +1,9 @@
 {
   "name": "ng-simple-carousel",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "peerDependencies": {
-    "@angular/common": "^9.0.7",
-    "@angular/core": "^9.0.7"
+    "@angular/common": ">9.0.7",
+    "@angular/core": ">9.0.7"
   },
   "dependencies": {
     "tslib": "^2.0.0"
